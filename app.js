@@ -15,13 +15,13 @@ function init() {
     choice.addEventListener("click", handleUserChoice)
   );
 }
-
 function handleUserChoice(e) {
-  userChoice = e.target.id;
+  const userChoice = e.target.id;
+  const computerChoice = generateComputerChoice();
+  const result = calculateResult(userChoice, computerChoice);
+
   updateDisplay(userChoiceDisplay, userChoice);
-  computerChoice = generateComputerChoice();
   updateDisplay(computerChoiceDisplay, computerChoice);
-  result = calculateResult(userChoice, computerChoice);
   updateDisplay(resultDisplay, result);
 }
 
