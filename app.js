@@ -15,7 +15,7 @@ function init() {
     choice.addEventListener("click", handleUserChoice)
   );
 }
-function handleUserChoice(e) {
+const handleUserChoice = (e) => {
   const userChoice = e.target.id;
   const computerChoice = generateComputerChoice();
   const result = calculateResult(userChoice, computerChoice);
@@ -23,19 +23,19 @@ function handleUserChoice(e) {
   updateDisplay(userChoiceDisplay, userChoice);
   updateDisplay(computerChoiceDisplay, computerChoice);
   updateDisplay(resultDisplay, result);
-}
+};
 
 function updateDisplay(element, value) {
   element.innerHTML = value;
 }
 
-function genComChoice() {
+const genComChoice = () => {
   const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
-}
+};
 
-function calculateResult(userChoice, computerChoice) {
+const calculateResult = (userChoice, computerChoice) => {
   if (userChoice === computerChoice) {
     return "It's a draw, mate!";
   } else if (
@@ -47,7 +47,7 @@ function calculateResult(userChoice, computerChoice) {
   } else {
     return "YOU WIN!";
   }
-}
+};
 
 // Initialize the game
 init();
