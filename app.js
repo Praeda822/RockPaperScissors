@@ -4,42 +4,50 @@ const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
 const possibleChoices = document.querySelectorAll("button");
+
+// Game state
 let userChoice;
 let computerChoice;
 let result;
 
-possibleChoices.forEach((possibleChoice) =>
-  possibleChoice.addEventListener("click", (e) => {
-    userChoice = e.target.id;
-    userChoiceDisplay.innerHTML = userChoice;
-    genComputerChoice();
-    computerChoiceDisplay.innerHTML = computerChoice;
-    getResult();
-    resultDisplay.innerHTML = result;
-  })
-);
+function init() {
+  possibleChoices.forEach((choice) =>
+    choice.addEventListener("click", handleUserChoice)
+  );
+}
 
-function genComputerChoice() {
-  const randomNum = Math.floor(Math.random() * 3) + 1;
+function handleUserChoice(e) {
+  userChoice = e.target.id;
+  updateDisplay(userChoiceDisplay, userChoice);
+  computerChoice = generateComputerChoice();
+  updateDisplay(computerChoiceDisplay, computerChoice);
+  result = calculateResult(userChoice, computerChoice);
+  updateDisplay(resultDisplay, result);
+}
 
-  if (randomNum === 1) {
-    computerChoice = "rock";
-  }
+function updateDisplay(element, value) {
+  element.innerHTML = value;
+}
 
-  if (randomNum === 2) {
-    computerChoice = "paper";
-  }
+function genComChoice() {
+  const choices = ["rock", "paper", "scissors"];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
 
-  if (randomNum === 3) {
-    computerChoice = "scissors";
+function calculateResult(userChoice, computerChoice) {
+  if (userChoice === computerChoice) {
+    return "It's a draw, mate!";
+  } else if (
+    (computerChoice === "rock" && userChoice === "scissors") ||
+    (computerChoice === "scissors" && userChoice === "paper") ||
+    (computerChoice === "paper" && userChoice === "rock")
+  ) {
+    return "YOU LOSE!";
+  } else {
+    return "YOU WIN!";
   }
 }
 
-function getResult() {
-  if (computerChoice === userChoice) {
-    result = "Its a draw, mate!";
-  }
-  if (computerChoice === "rock" && userChoice === "paper") {
-    result = "YOU LOSE!";
-  }
-}
+// Initialize the game
+init();
