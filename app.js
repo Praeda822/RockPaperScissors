@@ -3,10 +3,10 @@
 // Game Class
 class RockPaperScissors {
   constructor() {
-    const computerChoiceDisplay = document.getElementById("computer-choice");
-    const userChoiceDisplay = document.getElementById("user-choice");
-    const resultDisplay = document.getElementById("result");
-    const possibleChoices = document.querySelectorAll("button");
+    this.computerChoiceDisplay = document.getElementById("computer-choice");
+    this.userChoiceDisplay = document.getElementById("user-choice");
+    this.resultDisplay = document.getElementById("result");
+    this.possibleChoices = document.querySelectorAll("button");
 
     // Initialize Game state
     this.userChoice = null;
@@ -19,45 +19,48 @@ class RockPaperScissors {
 
   // Refactored Init to add bind handlers to my buttons
   init() {
-    this.possibleChoices.forEach((choice) =>
-      choice.addEventListener("click", handleUserChoice)
-    );
+    if (this.possibleChoices) {
+      this.possibleChoices.forEach((choice) =>
+        choice.addEventListener("click", (e) => this.handleUserChoice(e))
+      );
+    } else {
+      console.error("Button debugger");
+    }
+  }
+
+  handleUserChoice(e) {
+    this.userChoice = e.target.id;
+    this.computerChoice = generateComputerChoice();
+    this.result = this.calculateResult(this.userChoice, this.computerChoice);
+
+    this.updateDisplay(this.userChoiceDisplay, this.userChoice);
+    this.updateDisplay(this.computerChoiceDisplay, this.computerChoice);
+    this.updateDisplay(this.resultDisplay, this.result);
+  }
+
+  updateDisplay(element, value) {
+    element.innerHTML = value;
+  }
+
+  generateComputerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+  }
+
+  calculateResult(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+      return "It's a draw, mate!";
+    } else if (
+      (computerChoice === "rock" && userChoice === "scissors") ||
+      (computerChoice === "scissors" && userChoice === "paper") ||
+      (computerChoice === "paper" && userChoice === "rock")
+    ) {
+      return "YOU LOSE!";
+    } else {
+      return "YOU WIN!";
+    }
   }
 }
-
-const handleUserChoice = (e) => {
-  const userChoice = e.target.id;
-  const computerChoice = generateComputerChoice();
-  const result = calculateResult(userChoice, computerChoice);
-
-  updateDisplay(userChoiceDisplay, userChoice);
-  updateDisplay(computerChoiceDisplay, computerChoice);
-  updateDisplay(resultDisplay, result);
-};
-
-function updateDisplay(element, value) {
-  element.innerHTML = value;
-}
-
-const generateComputerChoice = () => {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
-};
-
-const calculateResult = (userChoice, computerChoice) => {
-  if (userChoice === computerChoice) {
-    return "It's a draw, mate!";
-  } else if (
-    (computerChoice === "rock" && userChoice === "scissors") ||
-    (computerChoice === "scissors" && userChoice === "paper") ||
-    (computerChoice === "paper" && userChoice === "rock")
-  ) {
-    return "YOU LOSE!";
-  } else {
-    return "YOU WIN!";
-  }
-};
-
 // Initialize the game
-init();
+new RockPaperScissors();
