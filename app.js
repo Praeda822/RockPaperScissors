@@ -1,18 +1,19 @@
 "use strict";
 
+// Game Class
 class RockPaperScissors {
   constructor() {
     const computerChoiceDisplay = document.getElementById("computer-choice");
     const userChoiceDisplay = document.getElementById("user-choice");
     const resultDisplay = document.getElementById("result");
     const possibleChoices = document.querySelectorAll("button");
+
+    // Initialize Game state
+    this.userChoice = null;
+    this.computerChoice = null;
+    this.result = null;
   }
 }
-
-// Game state
-let userChoice;
-let computerChoice;
-let result;
 
 function init() {
   possibleChoices.forEach((choice) =>
