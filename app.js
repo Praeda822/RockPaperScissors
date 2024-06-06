@@ -12,14 +12,19 @@ class RockPaperScissors {
     this.userChoice = null;
     this.computerChoice = null;
     this.result = null;
+
+    // Assign listeners to buttons
+    this.init();
+  }
+
+  // Refactored Init to add bind handlers to my buttons
+  init() {
+    this.possibleChoices.forEach((choice) =>
+      choice.addEventListener("click", handleUserChoice)
+    );
   }
 }
 
-function init() {
-  possibleChoices.forEach((choice) =>
-    choice.addEventListener("click", handleUserChoice)
-  );
-}
 const handleUserChoice = (e) => {
   const userChoice = e.target.id;
   const computerChoice = generateComputerChoice();
