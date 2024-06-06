@@ -30,7 +30,7 @@ class RockPaperScissors {
 
   handleUserChoice(e) {
     this.userChoice = e.target.id;
-    this.computerChoice = generateComputerChoice();
+    this.computerChoice = this.generateComputerChoice();
     this.result = this.calculateResult(this.userChoice, this.computerChoice);
 
     this.updateDisplay(this.userChoiceDisplay, this.userChoice);
