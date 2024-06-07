@@ -21,6 +21,13 @@
       <h2 class="game__title">
         Result: <span class="game__result" id="result"></span>
       </h2>
+      <div class="game__info">
+        <p class="game__score">Your Score: <span id="user-score">0</span></p>
+        <p class="game__score">
+          Computer Score: <span id="computer-score">0</span>
+        </p>
+        <p class="game__round">Round: <span id="round-number">1</span></p>
+      </div>
       <div class="game__buttons">
         <button class="button button--rock" id="rock">
           <i class="fas fa-hand-rock"></i> Rock
@@ -32,6 +39,9 @@
           <i class="fas fa-hand-scissors"></i> Scissors
         </button>
       </div>
+      <button class="button button--restart" id="restart" style="display: none">
+        Restart Game
+      </button>
     </div>
     <script src="app.js" charset="utf-8"></script>
   </body>
