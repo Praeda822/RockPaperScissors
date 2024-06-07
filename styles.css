@@ -1,48 +1,53 @@
-/* Base styles */
+:root {
+  --font-family: Arial, sans-serif;
+  --bg-color: #f0f0f0;
+  --card-bg: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --rock-color: #d9534f;
+  --paper-color: #5bc0de;
+  --scissors-color: #f0ad4e;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: var(--bg-color);
 }
 
-/* Block: game */
 .game {
   text-align: center;
-  background-color: #fff;
+  background-color: var(--card-bg);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-color);
   padding: 20px;
   width: 300px;
 }
 
-/* Element: game__title */
 .game__title {
   font-size: 1.5em;
   margin: 10px 0;
 }
 
-/* Element: game__choice */
 .game__choice {
   font-weight: bold;
-  color: #007bff;
+  color: var(--primary-color);
 }
 
-/* Element: game__result */
 .game__result {
   font-weight: bold;
-  color: #28a745;
+  color: var(--success-color);
 }
 
-/* Element: game__buttons */
 .game__buttons {
   margin-top: 20px;
 }
 
-/* Block: button */
 .button {
   padding: 10px 20px;
   margin: 5px;
@@ -52,25 +57,21 @@ body {
   font-size: 1em;
 }
 
-/* Modifier: button--rock */
 .button--rock {
-  background-color: #d9534f;
+  background-color: var(--rock-color);
   color: #fff;
 }
 
-/* Modifier: button--paper */
 .button--paper {
-  background-color: #5bc0de;
+  background-color: var(--paper-color);
   color: #fff;
 }
 
-/* Modifier: button--scissors */
 .button--scissors {
-  background-color: #f0ad4e;
+  background-color: var(--scissors-color);
   color: #fff;
 }
 
-/* Button hover effects */
 .button:hover {
   opacity: 0.9;
 }
