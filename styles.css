@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 
 :root {
   --font-family: "Roboto", sans-serif;
@@ -41,7 +42,8 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 16px var(--shadow-color);
   padding: 30px;
-  width: 350px;
+  width: 90%;
+  max-width: 350px;
   transition: transform var(--transition-duration);
 }
 
@@ -77,13 +79,16 @@ body {
 }
 
 .button {
-  padding: 12px 25px;
+  padding: 12px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.1em;
   transition: background-color var(--transition-duration),
     transform var(--transition-duration);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .button--rock {
@@ -126,4 +131,16 @@ body {
 .button--paper:active,
 .button--scissors:active {
   animation: buttonAnimation 0.5s;
+}
+
+@media (max-width: 600px) {
+  .game {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .button {
+    padding: 10px 15px;
+    font-size: 1em;
+  }
 }
