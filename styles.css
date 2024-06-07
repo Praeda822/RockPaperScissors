@@ -43,7 +43,7 @@ body {
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
   gap: 15px;
   max-width: 350px;
   width: 90%;
@@ -72,6 +72,18 @@ body {
 
 .game__result {
   color: var(--success-color);
+  font-size: 1.2em;
+}
+
+.game__info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.game__score,
+.game__round {
+  margin: 0;
   font-size: 1.2em;
 }
 
@@ -110,6 +122,11 @@ body {
   color: #fff;
 }
 
+.button--restart {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 .button:hover {
   background-color: var(--button-hover);
   transform: translateY(-3px);
@@ -133,7 +150,8 @@ body {
 
 .button--rock:active,
 .button--paper:active,
-.button--scissors:active {
+.button--scissors:active,
+.button--restart:active {
   animation: buttonAnimation 0.5s;
 }
 
