@@ -11,6 +11,8 @@
   --paper-color: #5bc0de;
   --scissors-color: #f0ad4e;
   --button-hover: #e0e0e0;
+  --fade-in-duration: 0.5s;
+  --transition-duration: 0.3s;
 }
 
 body {
@@ -21,6 +23,16 @@ body {
   height: 100vh;
   margin: 0;
   background: var(--bg-color);
+  animation: fadeIn var(--fade-in-duration) ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .game {
@@ -30,7 +42,7 @@ body {
   box-shadow: 0 8px 16px var(--shadow-color);
   padding: 30px;
   width: 350px;
-  transition: transform 0.2s;
+  transition: transform var(--transition-duration);
 }
 
 .game:hover {
@@ -54,20 +66,24 @@ body {
 
 .game__result {
   color: var(--success-color);
+  font-size: 1.2em;
 }
 
 .game__buttons {
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .button {
   padding: 12px 25px;
-  margin: 8px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.1em;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color var(--transition-duration),
+    transform var(--transition-duration);
 }
 
 .button--rock {
@@ -88,4 +104,26 @@ body {
 .button:hover {
   background-color: var(--button-hover);
   transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+@keyframes buttonAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.button--rock:active,
+.button--paper:active,
+.button--scissors:active {
+  animation: buttonAnimation 0.5s;
 }
