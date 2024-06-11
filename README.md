@@ -30,12 +30,12 @@ Simply click on one of the buttons (Rock, Paper, or Scissors) to make your choic
 - **Paper** beats **Rock**
 - If both choices are the same, the round is a **draw**.
 
-### Files
+## Files
 
-**index.html**: Contains the HTML structure of the game.
-**style.css**: Contains the CSS styles for the game (not included in this example).
-**app.js**: Contains the JavaScript code for the game logic.
+**index.html**: Contains the HTML structure of the game.<br>
+**style.css**: Contains the CSS styles for the game.<br>
+**app.js**: Contains the JavaScript code for the game logic.<br>
 
-### Contributing
+## Contributing
 
 Contributions are welcome! If you have any suggestions or improvements, please open an issue or create a pull request.
